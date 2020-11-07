@@ -6,21 +6,22 @@
 #define UNIVERSE_CPP
 #include <iostream>
 #include <iterator>
-#include <string>
 #include <memory>
+#include <string>
 
 #include "../include/Object.h"
 #include "../include/ObjectFactory.h"
 #include "../include/Universe.h"
 #include "../include/Visitor.h"
 
-
 /**
  *  Returns the only instance of the Universe
  */
-Universe* Universe:: inst = nullptr;;
-Universe* Universe ::  instance(){
-    if (inst == nullptr){
+Universe* Universe::inst = nullptr;
+;
+Universe* Universe ::instance()
+{
+    if (inst == nullptr) {
         inst = new Universe();
     }
     return inst;
@@ -29,7 +30,8 @@ Universe* Universe ::  instance(){
 /**
  *  Releases all the dynamic objects still registered with the Universe.
  */
-Universe :: ~Universe(){
+Universe ::~Universe()
+{
     release(objects);
     inst = nullptr;
 }
@@ -39,7 +41,8 @@ Universe :: ~Universe(){
  *  will be the same as that over getSnapshot()'s result as long as no new
  *  objects are added to either of the containers.
  */
-Universe::iterator Universe::begin(){
+Universe::iterator Universe::begin()
+{
     return objects.begin();
 }
 
@@ -48,7 +51,8 @@ Universe::iterator Universe::begin(){
  *  will be the same as that over getSnapshot()'s result as long as no new
  *  objects are added to either of the containers.
  */
-Universe::iterator Universe::end() {
+Universe::iterator Universe::end()
+{
     return objects.end();
 }
 
@@ -57,7 +61,8 @@ Universe::iterator Universe::end() {
  *  will be the same as that over getSnapshot()'s result as long as no new
  *  objects are added to either of the containers.
  */
-Universe::const_iterator Universe::end() const{
+Universe::const_iterator Universe::end() const
+{
     return objects.end();
 }
 
@@ -66,9 +71,10 @@ Universe::const_iterator Universe::end() const{
  *  Universe. This should be used as the source of data for computing the
  *  next step in the simulation
  */
-std::vector<Object*> Universe :: getSnapshot() const{
+std::vector<Object*> Universe ::getSnapshot() const
+{
     std::vector<Object*> ret;
-    for (Object* obj : objects){
+    for (Object* obj : objects) {
         ret.push_back(obj->clone());
     }
     return ret;
@@ -80,12 +86,13 @@ std::vector<Object*> Universe :: getSnapshot() const{
  *  position should not be affected by any of the other objects.
  *
  */
-void Universe :: stepSimulation(const double& timeSec){
+void Universe ::stepSimulation(const double& timeSec)
+{
     std::vector<Object*> thisObj = getSnapshot();
-    for (uint32_t i = 1; i < thisObj.size(); ++i){
+    for (uint32_t i = 1; i < thisObj.size(); ++i) {
         vector2 forces = vector2();
-        for (uint32_t j = 0; j < thisObj.size(); ++j){
-            if (i != j){
+        for (uint32_t j = 0; j < thisObj.size(); ++j) {
+            if (i != j) {
                 forces += objects[i]->getForce(*objects[j]);
             }
         }
@@ -102,7 +109,8 @@ void Universe :: stepSimulation(const double& timeSec){
  *  Swaps the contents of the provided container with the Universe's Object
  *  store and releases the old Objects.
  */
-void Universe :: swap(std::vector<Object*>& snapshot){
+void Universe ::swap(std::vector<Object*>& snapshot)
+{
     objects.swap(snapshot);
     release(snapshot);
 }
@@ -111,7 +119,8 @@ void Universe :: swap(std::vector<Object*>& snapshot){
  *  Registers an Object with the universe. The Universe will clean up this
  *  object when it deems necessary.
  */
-Object* Universe:: addObject(Object* ptr){
+Object* Universe::addObject(Object* ptr)
+{
     objects.push_back(ptr);
     return ptr;
 }
@@ -119,12 +128,12 @@ Object* Universe:: addObject(Object* ptr){
 /**
  *  Calls delete on each pointer and removes it from the container.
  */
-void Universe :: release(std::vector<Object*>& object){
-    for (uint32_t i = 0; i < object.size(); ++i){
+void Universe ::release(std::vector<Object*>& object)
+{
+    for (uint32_t i = 0; i < object.size(); ++i) {
         delete object[i];
     }
     object.clear();
 }
-
 
 #endif

@@ -3,20 +3,24 @@
 //
 #ifndef VISITOR_CPP
 #define VISITOR_CPP
-#include <iostream>
+#include "../include/Visitor.h"
 #include "../include/Object.h"
 #include "../include/ObjectFactory.h"
-#include "../include/Visitor.h"
+#include <iostream>
 
 /**
  *  Construct a visitor that prints to the provided ostream.
  */
-PrintVisitor :: PrintVisitor(std::ostream& os) : os(os){}
+PrintVisitor ::PrintVisitor(std::ostream& os)
+    : os(os)
+{
+}
 
 /**
  *  Prints the object's name.
  */
-void PrintVisitor :: visit(Object& object){
+void PrintVisitor ::visit(Object& object)
+{
     os << object.getName();
 }
 
