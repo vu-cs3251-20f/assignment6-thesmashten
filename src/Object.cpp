@@ -1,6 +1,12 @@
-//
-// Created by Nishant Jain on 11/4/20.
-//
+// File name: ArrayListIter.cpp
+// Author: Nishant Jain
+// VUnetID: jainn6
+// Email: nishant.jain@vanderbilt.edu
+// Class: CS3251
+// Assignment Number: 6
+// Description: This class implements an Object structure for creating different objects for the
+// simulation Honor statement: I attest that I understand the honor code for this class and have
+// neither given nor received any unauthorized aid on this assignment. Last Changed: 11/7/20
 
 #ifndef OBJECT_CPP
 #define OBJECT_CPP
@@ -69,7 +75,7 @@ vector2 Object ::getPosition() const noexcept
  *  Returns the velocity vector.
  */
 //* The velocity of an object equals the change in its position divided by the corresponding change
-//in time.
+// in time.
 vector2 Object ::getVelocity() const noexcept
 {
     return velocity;

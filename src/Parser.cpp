@@ -1,6 +1,13 @@
-//
-// Created by Nishant Jain on 11/5/20.
-//
+// File name: ArrayListIter.cpp
+// Author: Nishant Jain
+// VUnetID: jainn6
+// Email: nishant.jain@vanderbilt.edu
+// Class: CS3251
+// Assignment Number: 6
+// Description: This class implements a Parser structure for loading data of different objects for
+// the simulation Honor statement: I attest that I understand the honor code for this class and have
+// neither given nor received any unauthorized aid on this assignment. Last Changed: 11/7/20
+
 #ifndef PARSER_CPP
 #define PARSER_CPP
 #include "../include/Parser.h"
