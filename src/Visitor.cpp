@@ -1,4 +1,4 @@
-// File name: ArrayListIter.cpp
+// File name: Visitor.cpp
 // Author: Nishant Jain
 // VUnetID: jainn6
 // Email: nishant.jain@vanderbilt.edu
