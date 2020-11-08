@@ -30,3 +30,4 @@ Object* ObjectFactory ::makeObject(
     return tmp;
 }
 #endif
+// comment

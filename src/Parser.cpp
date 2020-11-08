@@ -28,3 +28,4 @@ void Parser ::loadFile(const char* filename)
 }
 
 #endif
+// comment
